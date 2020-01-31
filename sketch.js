@@ -26,19 +26,8 @@ function preload() {
   bear = loadImage('assets/bear.jfif');
 }
 
-function centerCanvas() {
-  x = (windowWidth - width) / 2;
-  y = (windowHeight - height) / 2;
-  cnv.position(x, y);
-}
-
-function windowResized() {
-  centerCanvas();
-}
-
 function setup() {
   cnv = createCanvas(400, 400);
-  centerCanvas();
   background(random(1,255), random(1,255), random(1,255))
   textSize(20)
   fill(255)
