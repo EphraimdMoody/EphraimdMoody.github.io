@@ -27,6 +27,7 @@ function randomObj() {
   stroke(0)
   text('Score', 250, 20);
   text(Highscore, 310, 20);
+  text('note only use lowercase letters',20,230)
   if (robj == 'apple') {
     image(apple, 0, 0, 200, 200);
   }
