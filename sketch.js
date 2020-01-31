@@ -20,15 +20,6 @@ var catbtn
 var bearbtn
 var applebtn
 
-function preload() {
-  soundFormats('mp3', 'ogg', 'wav');
-  apple = loadImage('assets/apple.jpg');
-  cat = loadImage('assets/cat.jpg');
-  dog = loadImage('assets/dog.jpg');
-  bear = loadImage('assets/bear.jfif');
-  goodS = loadSound('assets/goodS.wav');
-  badS = loadSound('assets/badS.wav');
-}
 
 function centerCanvas() {
   x = (windowWidth - width) / 2;
@@ -40,6 +31,16 @@ function centerCanvas() {
 
 function windowResized() {
   centerCanvas();
+}
+
+function preload() {
+  soundFormats('mp3', 'ogg');
+  apple = loadImage('assets/apple.jpg');
+  cat = loadImage('assets/cat.jpg');
+  dog = loadImage('assets/dog.jpg');
+  bear = loadImage('assets/bear.jfif');
+  goodS = loadSound('assets/goodS.mp3');
+  badS = loadSound('assets/badS.mp3');
 }
 
 function setup() {
@@ -59,18 +60,20 @@ function setup() {
   tgbutt.position(btnx+90, btny);
   tgbutt.mousePressed(rgsetup)
   goodS.setVolume(0.1);
-  baS.setVolume(0.1);
+  badS.setVolume(0.1);
   if(loaded == 1){
   dogbtn.remove()
   catbtn.remove()
   bearbtn.remove()
   applebtn.remove()
   mmbutt.remove()
+  goodS.play();
   loaded = 0
   }
   if(loaded == 2){
     mmbutt.remove()
     inp.remove()
+    goodS.play();
   }
 }
 
@@ -105,6 +108,7 @@ function rgsetup(){
   inp.input(myInputEvent);
   tgbutt.remove()
   fgbutt.remove()
+  goodS.play();
   loaded = 2
   randomObj();
   mmbutt = createButton('Main Menu')
@@ -118,7 +122,10 @@ function dogpress(){
    Highscore += 10
    lbp = 'dog'
    randomObj();
-
+  goodS.play();
+  }
+    else{
+  badS.play();
   }
 }
 
@@ -128,6 +135,10 @@ function catpress(){
    Highscore += 10
    lbp = 'cat'
    randomObj();
+    goodS.play();
+  }
+    else{
+  badS.play();
   }
 }
 
@@ -137,7 +148,11 @@ function applepress(){
    Highscore += 10
   lbp = 'apple'
    randomObj();
+    goodS.play();
 
+  }
+    else{
+  badS.play();
   }
 }
 
@@ -148,7 +163,10 @@ function bearpress(){
    Highscore += 10
    lbp = 'bear'
    randomObj();
-
+  goodS.play();
+  }
+  else{
+  badS.play();
   }
 }
 
@@ -189,6 +207,7 @@ function myInputEvent() {
   if (this.value() == robj) {
     randomObj();
     Highscore += 10
+    goodS.play();
     if (inp.value() == robj) {
       randomObj();
       if (inp.value() == robj) {
