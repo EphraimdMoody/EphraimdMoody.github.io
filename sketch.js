@@ -21,10 +21,13 @@ var bearbtn
 var applebtn
 
 function preload() {
+  soundFormats('mp3', 'ogg', 'wav');
   apple = loadImage('assets/apple.jpg');
   cat = loadImage('assets/cat.jpg');
   dog = loadImage('assets/dog.jpg');
   bear = loadImage('assets/bear.jfif');
+  goodS = loadSound('assets/goodS.wav');
+  badS = loadSound('assets/badS.wav');
 }
 
 function centerCanvas() {
@@ -40,6 +43,7 @@ function windowResized() {
 }
 
 function setup() {
+
   cnv = createCanvas(400, 400);
   centerCanvas();
   background(random(1,255), random(1,255), random(1,255))
@@ -54,6 +58,8 @@ function setup() {
   tgbutt = createButton('Third grade')
   tgbutt.position(btnx+90, btny);
   tgbutt.mousePressed(rgsetup)
+  goodS.setVolume(0.1);
+  baS.setVolume(0.1);
   if(loaded == 1){
   dogbtn.remove()
   catbtn.remove()
@@ -85,6 +91,7 @@ function fgsetup(){
   applebtn = createButton('apple');
   applebtn.position(btnx+136, btny);
   applebtn.mousePressed(applepress)
+  goodS.play();
   loaded = 1
   mmbutt = createButton('Main Menu')
   mmbutt.position(btnx+315, btny);
