@@ -1,6 +1,8 @@
 var robj = ''
 var Highscore = 0
 var inp = ''
+var mmbutt
+var loaded = 0
 
 //mainmenu
 var tgbutt
@@ -31,6 +33,18 @@ function setup() {
   fgbutt.mousePressed(fgsetup)
   tgbutt = createButton('Third grade')
   tgbutt.mousePressed(rgsetup)
+  if(loaded == 1){
+  dogbtn.remove()
+  catbtn.remove()
+  bearbtn.remove()
+  applebtn.remove()
+  mmbutt.remove()
+  loaded = 0
+  }
+  if(loaded == 2){
+    mmbutt.remove()
+    inp.remove()
+  }
 }
 
 function fgsetup(){
@@ -46,6 +60,9 @@ function fgsetup(){
   bearbtn.mousePressed(bearpress)
   applebtn = createButton('apple');
   applebtn.mousePressed(applepress)
+  loaded = 1
+  mmbutt = createButton('Main Menu')
+  mmbutt.mousePressed(setup)
 }
 
 function rgsetup(){
@@ -55,6 +72,9 @@ function rgsetup(){
   randomObj();
   tgbutt.remove()
   fgbutt.remove()
+  loaded = 2
+  mmbutt = createButton('Main Menu')
+  mmbutt.mousePressed(setup)
 }
 
 function dogpress(){
