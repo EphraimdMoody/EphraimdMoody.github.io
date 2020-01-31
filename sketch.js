@@ -3,6 +3,8 @@ var Highscore = 0
 var inp = ''
 var mmbutt
 var loaded = 0
+var note
+var lbp
 
 //mainmenu
 var tgbutt
@@ -69,10 +71,10 @@ function rgsetup(){
   createCanvas(400, 400);
   inp = createInput('Type obect name here');
   inp.input(myInputEvent);
-  randomObj();
   tgbutt.remove()
   fgbutt.remove()
   loaded = 2
+  randomObj();
   mmbutt = createButton('Main Menu')
   mmbutt.mousePressed(setup)
 }
@@ -81,7 +83,9 @@ function dogpress(){
   if(robj == 'dog')
   {
    Highscore += 10
+   lbp = 'dog'
    randomObj();
+
   }
 }
 
@@ -89,6 +93,7 @@ function catpress(){
   if(robj == 'cat')
   {
    Highscore += 10
+   lbp = 'cat'
    randomObj();
   }
 }
@@ -97,7 +102,9 @@ function applepress(){
   if(robj == 'apple')
   {
    Highscore += 10
+  lbp = 'apple'
    randomObj();
+
   }
 }
 
@@ -106,7 +113,9 @@ function bearpress(){
   if(robj == 'bear')
   {
    Highscore += 10
+   lbp = 'bear'
    randomObj();
+
   }
 }
 
@@ -119,7 +128,7 @@ function randomObj() {
   stroke(0)
   text('Score', 250, 20);
   text(Highscore, 310, 20);
-  text('note only use lowercase letters',20,230)
+  text('note: if typing only use lowercase letters',20,250)
   if (robj == 'apple') {
     image(apple, 0, 0, 200, 200);
   }
@@ -131,6 +140,9 @@ function randomObj() {
   }
   if (robj == 'bear') {
     image(bear, 0, 0, 200, 200);
+  }
+  if(lbp == robj){
+   randomObj(); 
   }
   print(robj)
 }
@@ -148,6 +160,9 @@ function myInputEvent() {
       randomObj();
       if (inp.value() == robj) {
         randomObj();
+        if (inp.value() == robj) {
+          randomObj();
+        }
       }
     }
     setTimeout(clearInp, 300)
