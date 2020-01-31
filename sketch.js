@@ -24,7 +24,7 @@ function preload() {
 }
 
 function setup() {
-  cnv = createCanvas(400, 400);
+  createCanvas(400, 400);
   background(random(1,255), random(1,255), random(1,255))
   textSize(20)
   fill(255)
@@ -50,7 +50,7 @@ function setup() {
 }
 
 function fgsetup(){
-  //createCanvas(400, 400);
+  createCanvas(400, 400);
   randomObj();
   fgbutt.remove()
   tgbutt.remove()
@@ -68,7 +68,7 @@ function fgsetup(){
 }
 
 function rgsetup(){
-  //createCanvas(400, 400);
+  createCanvas(400, 400);
   inp = createInput('Type obect name here');
   inp.input(myInputEvent);
   tgbutt.remove()
