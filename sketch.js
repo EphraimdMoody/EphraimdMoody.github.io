@@ -31,7 +31,7 @@ function centerCanvas() {
   x = (windowWidth - width) / 2;
   y = (windowHeight - height) / 2;
   btnx = (windowWidth - width) / 2;
-  btny = (windowHeight - height) * 1.4;
+  btny = (windowHeight - height) + 167;
   cnv.position(x, y);
 }
 
