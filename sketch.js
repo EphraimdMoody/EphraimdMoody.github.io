@@ -5,6 +5,9 @@ var mmbutt
 var loaded = 0
 var note
 var lbp
+var cnv
+var x
+var y 
 
 //mainmenu
 var tgbutt
@@ -23,8 +26,19 @@ function preload() {
   bear = loadImage('assets/bear.jfif');
 }
 
+function centerCanvas() {
+  x = (windowWidth - width) / 2;
+  y = (windowHeight - height) / 2;
+  cnv.position(x, y);
+}
+
+function windowResized() {
+  centerCanvas();
+}
+
 function setup() {
-  createCanvas(400, 400);
+  cnv = createCanvas(400, 400);
+  centerCanvas();
   background(random(1,255), random(1,255), random(1,255))
   textSize(20)
   fill(255)
@@ -32,8 +46,10 @@ function setup() {
   text('What grade are you in?', 90, 200);
   text('press a button below', 90, 250);
   fgbutt = createButton('First grade')
+  fgbutt.position(x, y*3);
   fgbutt.mousePressed(fgsetup)
   tgbutt = createButton('Third grade')
+  tgbutt.position(x*1.4, y*3);
   tgbutt.mousePressed(rgsetup)
   if(loaded == 1){
   dogbtn.remove()
@@ -50,32 +66,39 @@ function setup() {
 }
 
 function fgsetup(){
-  createCanvas(400, 400);
+  //createCanvas(400, 400);
   randomObj();
   fgbutt.remove()
   tgbutt.remove()
   dogbtn = createButton('dog');
+  dogbtn.position(x, y*3);
   dogbtn.mousePressed(dogpress)
   catbtn = createButton('cat');
+  catbtn.position(x*1.18, y*3);
   catbtn.mousePressed(catpress)
   bearbtn = createButton('bear');
+  bearbtn.position(x*1.345, y*3);
   bearbtn.mousePressed(bearpress)
   applebtn = createButton('apple');
+  applebtn.position(x*1.545, y*3);
   applebtn.mousePressed(applepress)
   loaded = 1
   mmbutt = createButton('Main Menu')
+  mmbutt.position(x*2.35, y*3);
   mmbutt.mousePressed(setup)
 }
 
 function rgsetup(){
-  createCanvas(400, 400);
+  //createCanvas(400, 400);
   inp = createInput('Type obect name here');
+  inp.position(x, y*3);
   inp.input(myInputEvent);
   tgbutt.remove()
   fgbutt.remove()
   loaded = 2
   randomObj();
   mmbutt = createButton('Main Menu')
+  mmbutt.position(x*2.35, y*3);
   mmbutt.mousePressed(setup)
 }
 
