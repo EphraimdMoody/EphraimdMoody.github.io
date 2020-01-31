@@ -1,7 +1,7 @@
 html, body {
-  margin: 100;
+  margin: 10000;
   padding: 0;
-  background-color: coral;
+  background-color: #006363;
 }
 canvas {
   display: block;
